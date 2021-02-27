@@ -16,9 +16,9 @@ SENDER_PASSWORD =
 #DEMO BELOW
 
 #Registration
-![Demo](https://github.com/27lakshay/demo_gifs/blob/main/MyWays_Task_Registration_Demo.gif.gif)
+![Demo](https://github.com/27lakshay/demo_gifs/blob/main/MyWays_Task_Registration_Demo.gif)
 
 #Login
-![Demo](https://github.com/27lakshay/demo_gifs/blob/main/MyWays_Task_Login_Demo.gif.gif)
+![Demo](https://github.com/27lakshay/demo_gifs/blob/main/MyWays_Task_Login_Demo.gif)
 
 
