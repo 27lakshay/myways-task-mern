@@ -97,10 +97,10 @@ function Login({ closeNav, showLogin, setShowLogin }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const status = await login(email, password);
-        if (status) {
+        const response = await login(email, password);
+        if (response.status === true) {
             closeNavAndBackground();
-        } else window.alert("Email or password wrong");
+        } else window.alert(response.message);
     }
     // history.push("/dashboard");
     const closeNavAndBackground = () => {

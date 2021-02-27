@@ -50,16 +50,16 @@ export function AuthProvider({ children }) {
                 password,
             };
             const loggingIn = await backend.post(`/api/login`, user);
-            if (loggingIn.data.status === "authenticated") {
+            if (loggingIn.data.status === true) {
                 localStorage.setItem("auth-token", loggingIn.data.token);
                 setCurrentUser(true);
-                return true;
+                return loggingIn.data;
             }
         } catch (err) {
-            console.log(err.response.data.status);
-            // return err;
+            console.log(err.response.data);
+            return err.response.data;
         }
-        return false;
+        // return false;
     };
 
     function logout() {
@@ -106,26 +106,27 @@ export function AuthProvider({ children }) {
     //     }
     // }
 
-    // useEffect(() => {
-    //     const getUser = async () => {
-    //         try {
-    //             const response = await backend.get("/api/", {
-    //                 headers: {
-    //                     "x-auth-token": token,
-    //                 },
-    //             });
-    //             if (response.data.status === "authenticated") {
-    //                 setCurrentUser(true);
-    //             } else {
-    //                 localStorage.removeItem("auth-token");
-    //                 setCurrentUser(false);
-    //             }
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-    //     getUser();
-    // }, [currentUser]);
+    useEffect(() => {
+        const token = localStorage.getItem("auth-token");
+        const getUser = async () => {
+            try {
+                const response = await backend.get("/api/", {
+                    headers: {
+                        "x-auth-token": token,
+                    },
+                });
+                if (response.data.status === true) {
+                    setCurrentUser(true);
+                } else {
+                    localStorage.removeItem("auth-token");
+                    setCurrentUser(false);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getUser();
+    }, [currentUser]);
 
     // useEffect(() => {
     //     const unsubscribe = auth.onAuthStateChanged((user) => {
