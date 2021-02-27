@@ -12,4 +12,3 @@ SENDER_EMAIL =
 //
 SENDER_PASSWORD = 
 
-w
