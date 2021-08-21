@@ -1,6 +1,6 @@
 # myways-task-mern
 
-#create a .env file with below keys --
+#create a .env file with following keys --
 //
 ATLAS_URI= mongodb uri
 //
